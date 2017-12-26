@@ -8,23 +8,17 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace aspnetcore_angular_base
+namespace aspnetcore_reactredux_base
 {
     public class Program
     {
         public static void Main(string[] args)
         {
-            var config = new ConfigurationBuilder()
-                .SetBasePath(Directory.GetCurrentDirectory())
-                .AddJsonFile("hosting.json", optional: true)
-                .Build();
-
-            BuildWebHost(args,config).Run();
+            BuildWebHost(args).Run();
         }
 
-        public static IWebHost BuildWebHost(string[] args, IConfigurationRoot config) =>
+        public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
-                .UseConfiguration(config)
                 .UseStartup<Startup>()
                 .Build();
     }
